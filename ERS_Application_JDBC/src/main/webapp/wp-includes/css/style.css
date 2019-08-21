@@ -1,0 +1,47 @@
+.table-view {
+    /*  */
+    /*  */
+    /*  */
+    /*  */
+    /* display: flex; */
+}
+
+.top-buffer {
+    margin-top: 200px;
+    margin-left: 300px;
+    margin-right: 80px;
+    position: absolute;
+    left: 10%;
+    transition: all 0.5s ease;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    border-radius: 5px;
+    background-image: url("./../../wp-content/spiral_staircase.png");
+    transition: background 0.5s ease;
+}
+
+h6 {
+    text-align: center;
+    color: #585858;
+    font-family: bookman;
+    font-style: bold;
+    font-size: 50px;
+}
+
+label {
+    color: #585858;
+    font-family: bookman;
+    font-style: bold;
+    font-size: 16px;
+}
+
+input {
+    color: gray;
+    background: #F5F5F5;
+    font-family: bookman;
+    font-style: bold;
+    font-size: 16px;
+}

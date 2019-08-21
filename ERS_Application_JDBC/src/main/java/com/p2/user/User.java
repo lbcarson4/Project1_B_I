@@ -4,10 +4,14 @@ public class User {
 
 	String username, password, firstname, lastname, email, role;
 	
-	public User() {}
 	
+	
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+
 	public User(String username, String password, String firstname, String lastname, String email, String role) {
-		super();
 		this.username = username;
 		this.password = password;
 		this.firstname = firstname;

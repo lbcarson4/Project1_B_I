@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Project ONE" />
+    <meta property="og:site_name" content="Project ONE" />
+
+    <title>Project ONE</title>
+
+    <link rel="stylesheet" href="./wp-includes/css/main.css">
+    <link rel="stylesheet" href="./wp-includes/css/pop_up.css">
+    <link rel="stylesheet" type="text/css" href="./wp-includes/css/rotate_logo.css" media="all" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body id="top">
+    <header class="s-header">
+        <div class="logo">
+            <a href="./index.html">
+                <img id="logo" src="./wp-content/logo.png" />
+            </a>
+        </div>
+        <nav class="header-nav">
+            <a class="header-nav__close" title="close"><span>Close</span></a>
+            <div class="header-nav__content">
+                <h3>Pick one</h3>
+                <ul class="header-nav__list">
+                    <li class="current"><a href="./cr_reim.html" title="Create reimbursement">Create
+                            reimbursement</a></li>
+                    <li><a href="./view_reim.html" title="View reimbursement">View reimbursement</a></li>
+                    <li><a href="./index.html" title="Log out">Log out</a></li>
+                </ul>
+            </div>
+        </nav>
+        <a class="header-menu-toggle">
+            <span class="header-menu-text">Menu</span>
+            <span class="header-menu-icon"></span>
+        </a>
+    </header>
+
+    <h3 id="title">Welcome to Project ONE</h3>
+
+    <h1 id="title2" class="popup" onclick="func()">
+        We glad to see you again </br>
+        in our cloud portal for employee </br>
+        for continue working in the system </br>
+        Simple click on <span style="font-weight: bold; font-size: 1.2em">menu</span> button
+        <span class="popuptext" id="popup_window" style="font-size: 1em">Please start working</span>
+    </h1>
+
+    <script src="./wp-includes/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script src="./wp-includes/js/plugins.js" type="text/javascript"></script>
+    <script src="./wp-includes/js/main.js" type="text/javascript"></script>
+    <script src="./wp-includes/js/rocket-loader.min.js" type="text/javascript"></script>
+    <script src="./wp-includes/js/pop_up.js" type="text/javascript"></script>
+
+</body>
+
+</html>

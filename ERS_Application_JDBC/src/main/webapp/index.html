@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Project ONE" />
+    <meta property="og:site_name" content="Project ONE" />
+
+    <title>Project ONE</title>
+
+    <link rel="stylesheet" type="text/css" href="./wp-includes/css/rotate_logo.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="./wp-includes/css/login.css" media="all" />
+    <script src="https://kit.fontawesome.com/d71cdd3cda.js"></script>
+
+</head>
+
+<body>
+    <div class="logo">
+        <a href="index.html">
+            <img id="logo" src="./wp-content/logo.png" />
+        </a>
+    </div>
+
+    <form id="login-form" method="POST" action="Login.do">
+        <div class="field-name">
+            <i class="fas fa-user"></i>
+            <input type="text" id="username" name="username" placeholder="Username" required autocomplete="off">
+            <i class="fas fa-arrow-alt-circle-down"></i>
+
+        </div>
+        <div class="field-password inactive">
+            <i class="fas fa-key"></i>
+            <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off">
+            <input type="submit" class="fas fa-check-circle"/>
+            <!-- <i class="fas fa-arrow-alt-circle-down"></i> -->
+        </div>
+    </form>
+
+    <script src="./wp-includes/js/login.js"></script>
+
+</body>
+
+</html>

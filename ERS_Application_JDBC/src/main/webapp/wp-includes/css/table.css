@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    background-image: url("./../../wp-content/spiral_staircase.png");
+    transition: background 0.5s ease;
+}
+
+.table-view {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    background: #F5F5F5;
+    height: 80%;
+    width: 95em;
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    font-size: 16px;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}

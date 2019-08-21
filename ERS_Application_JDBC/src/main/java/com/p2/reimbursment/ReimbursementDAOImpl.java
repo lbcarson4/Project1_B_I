@@ -16,7 +16,6 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	public void insertReimbursment(Reimbursement r) {
 
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO ERS_REIMBURSMENT VALUES(?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, r.getId());
 			ps.setInt(2, r.getAmount());
