@@ -2,45 +2,65 @@
 <html lang="en-US">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Project ONE" />
-    <meta property="og:site_name" content="Project ONE" />
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Project ONE" />
+<meta property="og:site_name" content="Project ONE" />
 
-    <title>Project ONE</title>
+<title>Project ONE</title>
 
-    <link rel="stylesheet" type="text/css" href="./wp-includes/css/rotate_logo.css" media="all" />
-    <link rel="stylesheet" type="text/css" href="./wp-includes/css/login.css" media="all" />
-    <script src="https://kit.fontawesome.com/d71cdd3cda.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="./wp-includes/css/rotate_logo.css" media="all" />
+<link rel="stylesheet" type="text/css"
+	href="./wp-includes/css/login.css" media="all" />
+<script src="https://kit.fontawesome.com/d71cdd3cda.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
 
 </head>
 
 <body>
-    <div class="logo">
-        <a href="index.html">
-            <img id="logo" src="./wp-content/logo.png" />
-        </a>
-    </div>
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="display-4">Welcome to our Login Page!</h1>
+			<p class="lead">This is our Employment Reimbursement System,
+				please login to access our system.</p>
+			<hr class="my-4">
+			<p>It uses utility classes for typography and spacing to space
+				content out within the larger container.</p>
+		</div>
+	</div>
 
-    <form id="login-form" method="POST" action="Login.do">
-        <div class="field-name">
-            <i class="fas fa-user"></i>
-            <input type="text" id="username" name="username" placeholder="Username" required autocomplete="off">
-            <i class="fas fa-arrow-alt-circle-down"></i>
 
-        </div>
-        <div class="field-password inactive">
-            <i class="fas fa-key"></i>
-            <input type="password" id="password" name="password" placeholder="Password" required autocomplete="off">
-            <input type="submit" class="fas fa-check-circle"/>
-            <!-- <i class="fas fa-arrow-alt-circle-down"></i> -->
-        </div>
-    </form>
 
-    <script src="./wp-includes/js/login.js"></script>
+	<div class="logo">
+		<a href="index.html"> <img id="logo" src="./wp-content/logo.png" />
+		</a>
+	</div>
+
+	<form id="login-form" method="POST" action="Login.do">
+		<div class="field-name">
+			<i class="fas fa-user"></i> <input id="username" name="username"
+				type="text" placeholder="Username" required autocomplete="off">
+			<i class="fas fa-arrow-alt-circle-down"></i>
+
+
+		</div>
+		<div class="field-password inactive">
+			<i class="fas fa-key"></i> <input id="password" name="password"
+				type="password" placeholder="Password" required autocomplete="off">
+		</div>
+		<input type="submit" class="login-button" value="">
+	</form>
+
+	<script src="./wp-includes/js/login.js"></script>
 
 </body>
 

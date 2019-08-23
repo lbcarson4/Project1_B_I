@@ -13,19 +13,22 @@ public class LoginController {
 		String password = request.getParameter("password");
 		
 		UserDAOImpl userDAOImpl = new UserDAOImpl();
-		User user = new User(username, password);
-		
+		User user = new User();		
 		user = userDAOImpl.selectUserByUsernameAndPassword(username, password);
-		//we are retrieving an existing record by the pet's name
-		//that the user provided on the login page and storing it into 
-		//a pet object
-		System.out.println(user);
 		
+		//runs if user is empty
+		if (user == null) {
+			return "/index.html";
+		}
+		
+		//determines if user is employee or financial_manager
 		if(username.equals(user.getUsername()) && password.equals(user.getPassword())) {
-			//we are setting the session to the current logged in pet
 			request.getSession().setAttribute("User", user);
-			
-			return "/start_page.html";
+			if (user.getRole().equals("EMPLOYEE")) {
+				return "/start_page.html";
+			} else if (user.getRole().equals("FINANCIAL_MANAGER")) {
+				return "/start_page.html";
+			}
 		}
 		
 		return "/index.html";		

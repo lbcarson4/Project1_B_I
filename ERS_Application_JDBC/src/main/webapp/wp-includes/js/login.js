@@ -1,17 +1,16 @@
 function animForm() {
-    const endSign = document.querySelectorAll(".fa-arrow-alt-circle-down, .fa-check-circle");
+    const sign = document.querySelectorAll(".fa-arrow-alt-circle-down");
 
-    endSign.forEach(sign => {
-        sign.addEventListener("click", () => {
-            const input = sign.previousElementSibling;
-            const mainForm = sign.parentElement;
+    sign.forEach(i => {
+        i.addEventListener("click", () => {
+            const input = i.previousElementSibling;
+            const mainForm = i.parentElement;
             const nextForm = mainForm.nextElementSibling;
-            
+
             if (input.type === "text" && checkUserField(input)) {
                 // nextStep(mainForm, nextForm);
             } else if (input.type === "password" && checkUserField(input)) {
-                // nextStep(mainForm, nextForm);
-                
+                // nextStep(mainForm, nextForm);               
             } else {
                 mainForm.style.animation = "shake 0.5s ease";
             }
@@ -23,9 +22,9 @@ function animForm() {
 }
 
 function checkUserField(user) {
-    let urlImg = "url('/ERS_Application_JDBC/src/main/webapp/wp-content/error.png')";
-    let urlImg2 = "url('http://localhost:8080/ERS_Application_JDBC/wp-content/spiral_staircase.png')";
-    if (user.value.length < 1) {
+    let urlImg = "url('d:/Revature_Projects/Project_1/wp-content/error.png')";
+    let urlImg2 = "url('d:/Revature_Projects/Project_1/wp-content/spiral_staircase.png')";
+    if (user.value.length < 6) {
         error(urlImg);
     } else {
         error(urlImg2);

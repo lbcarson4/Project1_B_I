@@ -15,6 +15,9 @@ public class RequestHelper {
 		case "/ERS_Application_JDBC/Login.do":
 			return LoginController.Login(request);
 			
+		case "/ERS_Application_JDBC/Create.do":
+			return CreateController.Create(request);
+			
 		default:
 			return "/index.html";
 		}

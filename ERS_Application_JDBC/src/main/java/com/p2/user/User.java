@@ -4,12 +4,7 @@ public class User {
 
 	String username, password, firstname, lastname, email, role;
 	
-	
-	
-	public User(String username, String password) {
-		this.username = username;
-		this.password = password;
-	}
+	public User() {}
 
 	public User(String username, String password, String firstname, String lastname, String email, String role) {
 		this.username = username;

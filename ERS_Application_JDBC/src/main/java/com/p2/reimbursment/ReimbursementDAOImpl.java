@@ -8,6 +8,14 @@ import java.sql.SQLException;
 
 public class ReimbursementDAOImpl implements ReimbursementDAO {
 
+	static {
+	       try {
+	           Class.forName("oracle.jdbc.driver.OracleDriver");
+	       } catch (ClassNotFoundException e) {
+	           e.printStackTrace();
+	       }
+	  }
+	
 	private static String url = "jdbc:oracle:thin:@lestercarson.cij8ici48e2h.us-east-2.rds.amazonaws.com:1521:ORCL";
 	private static String username = "lbcarson4";
 	private static String password = "Lbc49681ataws";
@@ -16,7 +24,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	public void insertReimbursment(Reimbursement r) {
 
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO ERS_REIMBURSMENT VALUES(?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO ERS_REIMBURSEMENT VALUES(?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, r.getId());
 			ps.setInt(2, r.getAmount());
 			ps.setTimestamp(3, r.getSubmitted());
@@ -39,7 +47,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		Reimbursement r = null;
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSMENT ORDER BY REIR_ID");
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT ORDER BY REIR_ID");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				r = new Reimbursement(rs.getInt("REIR_ID"), rs.getInt("REIR_AMOUNT"), rs.getTimestamp("REIR_SUBMITTED"),
@@ -59,7 +67,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		Reimbursement r = null;
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSMENT WHERE REIR_ID = ?");
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_ID = ?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -80,7 +88,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		Reimbursement r = null;
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSMENT WHERE REIR_AUTHOR = ?");
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_AUTHOR = ?");
 			ps.setString(1, author);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -101,7 +109,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		Reimbursement r = null;
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSMENT WHERE REIR_TYPE = ? ORDER BY REIR_TYPE");
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_TYPE = ? ORDER BY REIR_TYPE");
 			ps.setString(1, type);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -122,7 +130,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		Reimbursement r = null;
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSMENT WHERE REIR_STATUS = ?");
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_STATUS = ?");
 			ps.setString(1, status);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -142,7 +150,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 			
-			PreparedStatement ps = conn.prepareStatement("UPDATE ERS_REIMBURSMENT SET REIR_STATUS = ? WHERE REIR_ID = ?");
+			PreparedStatement ps = conn.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIR_STATUS = ? WHERE REIR_ID = ?");
 			ps.setString(1, r.getStatus());
 			ps.setInt(2, r.getId());
 			ps.executeUpdate();
