@@ -5,17 +5,19 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReimbursementDAOImpl implements ReimbursementDAO {
 
 	static {
-	       try {
-	           Class.forName("oracle.jdbc.driver.OracleDriver");
-	       } catch (ClassNotFoundException e) {
-	           e.printStackTrace();
-	       }
-	  }
-	
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private static String url = "jdbc:oracle:thin:@lestercarson.cij8ici48e2h.us-east-2.rds.amazonaws.com:1521:ORCL";
 	private static String username = "lbcarson4";
 	private static String password = "Lbc49681ataws";
@@ -42,28 +44,27 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	}
 
 	@Override
-	public Reimbursement selectAllReimbursments() {
+	public List<Reimbursement> selectAllReimbursments() {
 
-		Reimbursement r = null;
+		List<Reimbursement> reims = new ArrayList<Reimbursement>();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT ORDER BY REIR_ID");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				r = new Reimbursement(rs.getInt("REIR_ID"), rs.getInt("REIR_AMOUNT"), rs.getTimestamp("REIR_SUBMITTED"),
-						rs.getTimestamp("REIR_RESOLVED"), rs.getString("REIR_DESCRIPTION"), rs.getBlob("REIR_RECEIPT"),
-						rs.getString("REIR_AUTHOR"), rs.getString("REIR_RESOLVER"), rs.getString("REIR_STATUS"),
-						rs.getString("REIR_TYPE"));
+				reims.add(new Reimbursement(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getTimestamp(4),
+						rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return r;
+		return reims;
 	}
 
 	@Override
 	public Reimbursement selectReimbursmentById(int id) {
-		
+
 		Reimbursement r = null;
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
@@ -71,10 +72,9 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				r = new Reimbursement(rs.getInt("REIR_ID"), rs.getInt("REIR_AMOUNT"), rs.getTimestamp("REIR_SUBMITTED"),
-						rs.getTimestamp("REIR_RESOLVED"), rs.getString("REIR_DESCRIPTION"), rs.getBlob("REIR_RECEIPT"),
-						rs.getString("REIR_AUTHOR"), rs.getString("REIR_RESOLVER"), rs.getString("REIR_STATUS"),
-						rs.getString("REIR_TYPE"));
+				r = new Reimbursement(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getTimestamp(4),
+						rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -83,77 +83,84 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	}
 
 	@Override
-	public Reimbursement selectReimbursmentByAuthor(String author) {
-		
-		Reimbursement r = null;
+	public List<Reimbursement> selectReimbursmentByAuthor(String author) {
+
+		List<Reimbursement> reims = new ArrayList<Reimbursement>();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_AUTHOR = ?");
 			ps.setString(1, author);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				r = new Reimbursement(rs.getInt("REIR_ID"), rs.getInt("REIR_AMOUNT"), rs.getTimestamp("REIR_SUBMITTED"),
-						rs.getTimestamp("REIR_RESOLVED"), rs.getString("REIR_DESCRIPTION"), rs.getBlob("REIR_RECEIPT"),
-						rs.getString("REIR_AUTHOR"), rs.getString("REIR_RESOLVER"), rs.getString("REIR_STATUS"),
-						rs.getString("REIR_TYPE"));
+				reims.add(new Reimbursement(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getTimestamp(4),
+						rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return r;
+		return reims;
 	}
 
 	@Override
-	public Reimbursement selectReimbursmentByType(String type) {
-		
-		Reimbursement r = null;
+	public List<Reimbursement> selectReimbursmentByType(String type) {
+
+		List<Reimbursement> reims = new ArrayList<Reimbursement>();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_TYPE = ? ORDER BY REIR_TYPE");
+			PreparedStatement ps = conn
+					.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_TYPE = ? ORDER BY REIR_TYPE");
 			ps.setString(1, type);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				r = new Reimbursement(rs.getInt("REIR_ID"), rs.getInt("REIR_AMOUNT"), rs.getTimestamp("REIR_SUBMITTED"),
-						rs.getTimestamp("REIR_RESOLVED"), rs.getString("REIR_DESCRIPTION"), rs.getBlob("REIR_RECEIPT"),
-						rs.getString("REIR_AUTHOR"), rs.getString("REIR_RESOLVER"), rs.getString("REIR_STATUS"),
-						rs.getString("REIR_TYPE"));
+				reims.add(new Reimbursement(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getTimestamp(4),
+						rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return r;
+		return reims;
 	}
 
 	@Override
-	public Reimbursement selectReimbursmentByStatus(String status) {
-		
-		Reimbursement r = null;
+	public List<Reimbursement> selectReimbursmentByStatus(String status) {
+
+		List<Reimbursement> reims = new ArrayList<Reimbursement>();
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_STATUS = ?");
 			ps.setString(1, status);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				r = new Reimbursement(rs.getInt("REIR_ID"), rs.getInt("REIR_AMOUNT"), rs.getTimestamp("REIR_SUBMITTED"),
-						rs.getTimestamp("REIR_RESOLVED"), rs.getString("REIR_DESCRIPTION"), rs.getBlob("REIR_RECEIPT"),
-						rs.getString("REIR_AUTHOR"), rs.getString("REIR_RESOLVER"), rs.getString("REIR_STATUS"),
-						rs.getString("REIR_TYPE"));
+				reims.add(new Reimbursement(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getTimestamp(4),
+						rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9),
+						rs.getString(10)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return r;
+		return reims;
 	}
 
 	@Override
 	public void updateReimbursmentByStatus(Reimbursement r) {
-		
+
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			
-			PreparedStatement ps = conn.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIR_STATUS = ? WHERE REIR_ID = ?");
+
+			PreparedStatement ps = conn
+					.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIR_STATUS = ? WHERE REIR_ID = ?");
+			PreparedStatement ps2 = conn.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIR_RESOLVED = ? WHERE REIR_ID = ?");
+			PreparedStatement ps3 = conn.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIR_RESOLVER = ? WHERE REIR_ID = ?");
 			ps.setString(1, r.getStatus());
 			ps.setInt(2, r.getId());
+			ps2.setTimestamp(1, r.getResolved());
+			ps2.setInt(2, r.getId());
+			ps3.setString(1, r.getResolver());
+			ps3.setInt(2, r.getId());
 			ps.executeUpdate();
+			ps2.executeUpdate();
+			ps3.executeUpdate();
 			ps.cancel();
 		} catch (SQLException e) {
 			e.printStackTrace();

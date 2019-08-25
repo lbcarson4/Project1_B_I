@@ -26,8 +26,8 @@ public class LoginController {
 			request.getSession().setAttribute("User", user);
 			if (user.getRole().equals("EMPLOYEE")) {
 				return "/start_page.html";
-			} else if (user.getRole().equals("FINANCIAL_MANAGER")) {
-				return "/start_page.html";
+			} else if (user.getRole().equals("F_N")) {
+				return "/start_page_fm.html";
 			}
 		}
 		

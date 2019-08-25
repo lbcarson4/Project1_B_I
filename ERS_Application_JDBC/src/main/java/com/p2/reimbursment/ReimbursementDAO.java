@@ -1,12 +1,14 @@
 package com.p2.reimbursment;
 
+import java.util.List;
+
 public interface ReimbursementDAO {
 
 	public void insertReimbursment(Reimbursement r);
-	public Reimbursement selectAllReimbursments();
+	public List<Reimbursement> selectAllReimbursments();
 	public Reimbursement selectReimbursmentById(int id);
-	public Reimbursement selectReimbursmentByAuthor(String author);
-	public Reimbursement selectReimbursmentByType(String type);
-	public Reimbursement selectReimbursmentByStatus(String status);
+	public List<Reimbursement> selectReimbursmentByAuthor(String author);
+	public List<Reimbursement> selectReimbursmentByType(String type);
+	public List<Reimbursement> selectReimbursmentByStatus(String status);
 	public void updateReimbursmentByStatus(Reimbursement r);
 }

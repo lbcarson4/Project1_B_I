@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Project ONE" />
+<meta property="og:site_name" content="Project ONE" />
+
+<title>Project ONE</title>
+
+<link rel="stylesheet" href="./wp-includes/css/main.css">
+<link rel="stylesheet" href="./wp-includes/css/pop_up.css">
+<link rel="stylesheet" href="./wp-includes/css/table.css">
+<link rel="stylesheet" type="text/css"
+	href="./wp-includes/css/rotate_logo.css" media="all" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<link rel="stylesheet" type="text/css"
+	href="./wp-includes/css/style.css" />
+</head>
+
+<body id="top">
+	<header class="s-header">
+		<div class="logo">
+			<a href="index.html"> <img id="logo" src="./wp-content/logo.png" />
+			</a>
+		</div>
+		<nav class="header-nav">
+			<a class="header-nav__close" title="close"><span>Close</span></a>
+			<div class="header-nav__content">
+				<h3>Pick one</h3>
+				<ul class="header-nav__list">
+					<li class="current"><a href="./ad_reim.html"
+						title="Approve/Deny reimbursement">Approve/Deny reimbursement</a></li>
+					<li><a href="./view_reim.html" title="View reimbursement">View
+							reimbursement</a></li>
+					<li><a href="./index.html" title="Log out">Log out</a></li>
+				</ul>
+			</div>
+		</nav>
+		<a class="header-menu-toggle"> <span class="header-menu-text">Menu</span>
+			<span class="header-menu-icon"></span>
+		</a>
+	</header>
+
+
+	<form id="cr-reim-form" method="POST" action="Update.do">
+		<div class="top-buffer">
+			<h6>Please enter the id number of the Reimbursement</h6>
+			<h6>Then choose whether you want to approve or deny the
+				Reimbursement</h6>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="inputid4">ID</label> <input type="text"
+						class="form-control" id="id" name="id"
+						placeholder="Enter the id of the reimbursement"
+						style="font-size: 16px; border-radius: 5px;">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="inlineFormCustomSelect">Type</label> <select
+						class="custom-select mr-sm-2" id="status" name="status"
+						style="font-size: 16px; border-radius: 5px;">
+						<option selected>Please Choose One</option>
+						<option value="APPROVED">APPROVED</option>
+						<option value="DENIED">DENIED</option>
+					</select>
+				</div>
+			</div>
+			<button id="cr-reimButton" type="submit" class="btn btn-primary"
+				style="font-size: 16px; border-radius: 5px; background-color: #A9A9A9; font-family: bookman;">Create
+				Reimbursement</button>
+		</div>
+	</form>
+
+
+	<script src="./wp-includes/js/jquery-3.2.1.min.js"
+		type="text/javascript"></script>
+	<script src="./wp-includes/js/plugins.js" type="text/javascript"></script>
+	<script src="./wp-includes/js/main.js" type="text/javascript"></script>
+	<script src="./wp-includes/js/rocket-loader.min.js"
+		type="text/javascript"></script>
+	<script src="./wp-includes/js/pop_up.js" type="text/javascript"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -21,6 +21,5 @@ public class MasterServlet extends HttpServlet{
 		
 		String targetURL = RequestHelper.process(req, res);
 		req.getRequestDispatcher(targetURL).forward(req, res);
-		//chose to respond with a forward for every POST request
 	}
 }
