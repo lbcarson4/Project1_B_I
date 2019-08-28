@@ -25,3 +25,7 @@
 2019-08-28 10:17:51 INFO  LoginController:42 - lbcarson3 who is a F_N logged in to the system.
 2019-08-28 10:19:41 INFO  LoginController:42 - lbcarson3 who is a F_N logged in to the system.
 2019-08-28 10:19:44 INFO  TableViewController:28 - Reimbursement infomation was pulled from the database.
+2019-08-28 12:50:22 INFO  LoginController:42 - lbcarson who is a F_M logged in to the system.
+2019-08-28 12:50:26 INFO  TableViewController:37 - Reimbursement infomation was pulled from the database.
+2019-08-28 12:51:32 INFO  UpdateController:36 - lbcarson APPROVED reimbursement with the id of 4
+2019-08-28 12:51:37 INFO  TableViewController:37 - Reimbursement infomation was pulled from the database.

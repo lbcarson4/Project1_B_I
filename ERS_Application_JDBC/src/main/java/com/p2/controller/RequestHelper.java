@@ -19,7 +19,7 @@ public class RequestHelper {
 			return UpdateController.Update(request);
 			
 		case "/ERS_Application_JDBC/TableView.do":
-			return TableViewController.View(response);
+			return TableViewController.View(request, response);
 			
 		default:
 			return "/index.html";

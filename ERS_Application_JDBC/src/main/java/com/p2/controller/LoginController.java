@@ -38,7 +38,7 @@ public class LoginController {
 			if (user.getRole().equals("EMPLOYEE")) {
 				loggy.info(user.getUsername() + " who is a " + user.getRole() + " logged in to the system.");
 				return "/start_page.html";
-			} else if (user.getRole().equals("F_N")) {
+			} else if (user.getRole().equals("F_M")) {
 				loggy.info(user.getUsername() + " who is a " + user.getRole() + " logged in to the system.");
 				return "/start_page_fm.html";
 			}
