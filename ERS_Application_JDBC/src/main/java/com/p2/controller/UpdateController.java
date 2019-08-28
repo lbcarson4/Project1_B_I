@@ -4,11 +4,16 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+
 import com.p2.reimbursment.Reimbursement;
 import com.p2.reimbursment.ReimbursementDAOImpl;
 import com.p2.user.User;
 
 public class UpdateController {
+	
+	private final static Logger loggy = Logger.getLogger(UpdateController.class);
 
 	public static String Update(HttpServletRequest request) {
 		
@@ -27,6 +32,8 @@ public class UpdateController {
 		reim.setStatus(status);
 		reim.setResolver(user.getUsername());
 		reimDAOImpl.updateReimbursmentByStatus(reim);
+		
+		loggy.info(user.getUsername() + " " + reim.getStatus() + " reimbursement with the id of " + reim.getId());
 		
 		return "/start_page_fm.html";
 	}

@@ -22,8 +22,8 @@ function animForm() {
 }
 
 function checkUserField(user) {
-    let urlImg = "url('d:/Revature_Projects/Project_1/wp-content/error.png')";
-    let urlImg2 = "url('d:/Revature_Projects/Project_1/wp-content/spiral_staircase.png')";
+    let urlImg = "url('http://localhost:8080/ERS_Application_JDBC/wp-content/error.png')";
+    let urlImg2 = "url('http://localhost:8080/ERS_Application_JDBC/wp-content/spiral_staircase.png')";
     if (user.value.length < 6) {
         error(urlImg);
     } else {

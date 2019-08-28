@@ -1,5 +1,6 @@
 package com.p2.reimbursment;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.p2.highlander.HighConn;
 
 public class ReimbursementDAOImpl implements ReimbursementDAO {
 
@@ -25,8 +28,9 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	@Override
 	public void insertReimbursment(Reimbursement r) {
 
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO ERS_REIMBURSEMENT VALUES(?,?,?,?,?,?,?,?,?,?)");
+		try {
+			PreparedStatement ps = HighConn.db.conn
+					.prepareStatement("INSERT INTO ERS_REIMBURSEMENT VALUES(?,?,?,?,?,?,?,?,?,?)");
 			ps.setInt(1, r.getId());
 			ps.setInt(2, r.getAmount());
 			ps.setTimestamp(3, r.getSubmitted());
@@ -47,14 +51,12 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	public List<Reimbursement> selectAllReimbursments() {
 
 		List<Reimbursement> reims = new ArrayList<Reimbursement>();
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT ORDER BY REIR_ID");
+		try {
+			PreparedStatement ps = HighConn.db.conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT ORDER BY REIR_ID");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				reims.add(new Reimbursement(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getTimestamp(4),
-						rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9),
-						rs.getString(10)));
+				rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -66,15 +68,14 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	public Reimbursement selectReimbursmentById(int id) {
 
 		Reimbursement r = null;
-		try (Connection conn = DriverManager.getConnection(url, username, password)) {
+		try {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_ID = ?");
+			PreparedStatement ps = HighConn.db.conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIR_ID = ?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				r = new Reimbursement(rs.getInt(1), rs.getInt(2), rs.getTimestamp(3), rs.getTimestamp(4),
-						rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9),
-						rs.getString(10));
+				rs.getString(5), rs.getBlob(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -148,20 +149,13 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
 
-			PreparedStatement ps = conn
-					.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIR_STATUS = ? WHERE REIR_ID = ?");
-			PreparedStatement ps2 = conn.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIR_RESOLVED = ? WHERE REIR_ID = ?");
-			PreparedStatement ps3 = conn.prepareStatement("UPDATE ERS_REIMBURSEMENT SET REIR_RESOLVER = ? WHERE REIR_ID = ?");
-			ps.setString(1, r.getStatus());
-			ps.setInt(2, r.getId());
-			ps2.setTimestamp(1, r.getResolved());
-			ps2.setInt(2, r.getId());
-			ps3.setString(1, r.getResolver());
-			ps3.setInt(2, r.getId());
-			ps.executeUpdate();
-			ps2.executeUpdate();
-			ps3.executeUpdate();
-			ps.cancel();
+			CallableStatement cs = conn.prepareCall("{call update_status(?,?,?,?)}");
+			cs.setInt(1, r.getId());
+			cs.setString(2, r.getStatus());
+			cs.setTimestamp(3, r.getResolved());
+			cs.setString(4, r.getResolver());
+			cs.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

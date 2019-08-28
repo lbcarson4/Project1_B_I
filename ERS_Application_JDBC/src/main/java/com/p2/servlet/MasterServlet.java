@@ -9,6 +9,8 @@ import com.p2.controller.RequestHelper;
 
 public class MasterServlet extends HttpServlet{
 	
+	private static final long serialVersionUID = -9067681520893503894L;
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res)
 		throws ServletException, IOException{
