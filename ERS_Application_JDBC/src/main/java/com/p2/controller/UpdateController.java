@@ -18,16 +18,19 @@ public class UpdateController {
 	public static String Update(HttpServletRequest request) {
 		
 		//getting the session that was set upon login in LoginController
+		//Declaring variables
 		ReimbursementDAOImpl reimDAOImpl = new ReimbursementDAOImpl();
 		String id = request.getParameter("id");
+		String status = request.getParameter("status");
 		Reimbursement reim = reimDAOImpl.selectReimbursmentById(Integer.parseInt(id));
 		User user = (User) request.getSession().getAttribute("User");
 		
+		//Get Timestamp
 		Date date= new Date();
 		long time = date.getTime();
 		Timestamp ts = new Timestamp(time);
-		String status = request.getParameter("status");
 		
+		//fills in and updates reimbursement information
 		reim.setResolved(ts);
 		reim.setStatus(status);
 		reim.setResolver(user.getUsername());

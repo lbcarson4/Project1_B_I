@@ -8,23 +8,27 @@ import com.p2.user.UserDAOImpl;
 
 public class LoginController {
 	
+	//logger
 	private final static Logger loggy = Logger.getLogger(LoginController.class);
 
 	public static String Login(HttpServletRequest request) {
 		
+		//declaring Variables
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserDAOImpl userDAOImpl = new UserDAOImpl();
 		User user = new User();
 		String key = "Clemson";
 		
-		//User user2 = new User("lbcarson4", "lbc4", "Lester", "Carson", "lbcarson4@gmail.com", "EMPLOYEE");
+		//this is for inserting users
+		//User user2 = new User("lbcarson5", "lbc5", "Lester", "Carson", "lbcarson4@gmail.com", "EMPLOYEE");
 		//user2.setPassword(EncryptPassword.encrypt(user2.getPassword(), "Clemson"));
 		//userDAOImpl.insertUser(user2);
 		
+		//selects user from the database using a username and the encrypted password
 		user = userDAOImpl.selectUserByUsernameAndPassword(username, EncryptPassword.encrypt(password, key));
 		
-		//runs if user is empty
+		//checks if user is empty
 		if (user == null) {
 			return "/index.html";
 		}

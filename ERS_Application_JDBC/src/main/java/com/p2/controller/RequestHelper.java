@@ -7,6 +7,7 @@ public class RequestHelper {
 
 	public static String process(HttpServletRequest request, HttpServletResponse response) {
 		
+		//uses a switch statement to filter url/uri requests
 		switch(request.getRequestURI()) {
 		
 		case "/ERS_Application_JDBC/Login.do":

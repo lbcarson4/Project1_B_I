@@ -12,19 +12,22 @@ public class CreateController {
 	
 	private final static Logger loggy = Logger.getLogger(CreateController.class);
 
+	//Creates Reimbursement and sends it to the database
 	public static String Create(HttpServletRequest request) {
 
+		//Declared Variables
 		String amount = request.getParameter("amount");
 		String type = request.getParameter("type");
 		String description = request.getParameter("description");
 		
+		//Sets up timestamp/user session
 		Date date= new Date();
 		long time = date.getTime();
 		Timestamp ts = new Timestamp(time);
-		
 		User user = (User) request.getSession().getAttribute("User");
 		Reimbursement reim = new Reimbursement();
 		
+		//adds values to reimbursement object
 		reim.setAmount(Integer.parseInt(amount));
 		reim.setType(type);
 		reim.setDescription(description);
@@ -32,8 +35,10 @@ public class CreateController {
 		reim.setAuthor(user.getUsername());
 		reim.setStatus("PENDING");
 		
+		//inserts reimbursement into database
 		ReimbursementDAOImpl reimDAOImpl = new ReimbursementDAOImpl();
 		reimDAOImpl.insertReimbursment(reim);
+		
 		loggy.info(user.getUsername() + " created a reimbursement.");
 
 		return "/start_page.html";

@@ -8,7 +8,5 @@ public interface ReimbursementDAO {
 	public List<Reimbursement> selectAllReimbursments();
 	public Reimbursement selectReimbursmentById(int id);
 	public List<Reimbursement> selectReimbursmentByAuthor(String author);
-	public List<Reimbursement> selectReimbursmentByType(String type);
-	public List<Reimbursement> selectReimbursmentByStatus(String status);
 	public void updateReimbursmentByStatus(Reimbursement r);
 }

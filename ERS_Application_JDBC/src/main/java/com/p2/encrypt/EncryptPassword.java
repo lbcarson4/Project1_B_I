@@ -14,6 +14,7 @@ public class EncryptPassword {
 	private static String secretKey = "boooooooooom!!!!";
 	private static String salt = "ssshhhhhhhhhhh!!!!";
 
+	//Encrypts the password using AES encryption
     public static String encrypt(String strToEncrypt, String secret) {
         try {
             byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -34,6 +35,7 @@ public class EncryptPassword {
         return null;
     }
 
+    //Decrypts the password using AES encryption
     public static String decrypt(String strToDecrypt, String secret) {
         try {
             byte[] iv = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
