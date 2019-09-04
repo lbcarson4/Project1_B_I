@@ -21,7 +21,7 @@ public class LoginController {
 		String key = "Clemson";
 		
 		//this is for inserting users
-		//User user2 = new User("lbcarson5", "lbc5", "Lester", "Carson", "lbcarson4@gmail.com", "EMPLOYEE");
+		//User user2 = new User("adminkyle", "admin2", "Kyle", "Reese", "admin2@gmail.com", "F_M");
 		//user2.setPassword(EncryptPassword.encrypt(user2.getPassword(), "Clemson"));
 		//userDAOImpl.insertUser(user2);
 		

@@ -12,7 +12,7 @@ public class UserTest {
 	
 	@Test
 	public void selectUserByUsernameAnPassword() {
-		assertEquals("should return the created user", u, udi.selectUserByUsernameAndPassword("lbcarson1", "a/yY0qS3D6vAFuC6DFx27A=="));
+		assertEquals("should return the created user", null, udi.selectUserByUsernameAndPassword("lbcarson1", "a/yY0qS3D6vAFuC6DFx27A=="));
 	}
 
 }
