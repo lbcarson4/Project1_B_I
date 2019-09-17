@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Spring Assignment</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="display-4">Welcome to Barton's Theater</h1>
+			<p class="lead">Click the button to look at available show-times
+				for all movies!</p>
+			<hr class="my-4">
+			<p>You can also search for the movie of your choice by typing in
+				the name of the movie you want here</p>
+		</div>
+	</div>
+
+	<form class="form-inline">
+		<div class="form-group mx-sm-3 mb-2">
+			<input type="text" class="form-control" id="movieInput" placeholder="Movie Name">
+		</div>
+		<button id="moviename" type="submit" class="btn btn-primary mb-2" onclick="myFunction1()">Get Movie By Name</button>
+		<div id="showTimes"></div>
+	</form>
+
+	<div class="table-view">
+		<table id="myTable"
+			class="table table-striped table-bordered table-responsive-md sortable">
+			<thead>
+				<tr>
+					<th scope="col">Movie Name</th>
+					<th scope="col">Rating</th>
+					<th scope="col">Show Times</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+
+
+	<script src="movieshowtimes.js"></script>
+</body>
+</html>
